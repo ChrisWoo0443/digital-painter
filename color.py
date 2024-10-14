@@ -4,7 +4,7 @@ import numpy as py
 import cv2
 import numpy as np
 
-img = cv2.VideoCapture(1)
+img = cv2.VideoCapture(2)
 frameWidth = 1920
 frameHeight = 1080
 img.set(3, frameWidth)
