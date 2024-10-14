@@ -13,6 +13,8 @@ myColors = [[41, 57, 55, 255, 99, 255], [80, 106, 33, 160, 0, 255]]
 
 myColorsValue = []
 
+myPoints =[]
+
 def getContours(img):
     contours, hierarchy = cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
     x,y,w,h = 0,0,0,0
@@ -46,6 +48,15 @@ def getColors(img, myColors, myColorValues):
 while True:
     success, frame = img.read()
     flipped = cv2.flip(frame, 1)
+
+    imgResults = flipped.copy()
+    newPoints = getColors(flipped, myColors, myColorsValue)
+    if len(newPoints) != 0:
+        for point in newPoints:
+            myPoints.append(point)
+    if len(myPoints) != 0:
+
+
 
     cv2.imshow('frame', flipped)
     if cv2.waitKey(1) & 0xFF == ord('q'):
